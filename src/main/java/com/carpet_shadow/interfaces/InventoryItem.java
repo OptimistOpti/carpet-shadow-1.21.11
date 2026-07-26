@@ -7,11 +7,15 @@ import net.minecraft.nbt.NbtCompound;
 import java.util.Collection;
 
 // FIXME [PORT 1.21.11] see PORTING_NOTES.md #6.
-//  BlockEntity's NBT read/write methods (readNbt/createNbt and friends) may have been replaced by
-//  the ReadView/WriteView abstraction introduced in later 1.21.x snapshots. Verify BlockEntity's
-//  actual method names/signatures in the decompiled 1.21.11 sources - this affects readNbt() below
-//  AND every mixin in mixins/inv_updates/loaders/ that @Redirect's calls to
-//  "BlockEntity;readNbt(Lnet/minecraft/nbt/NbtCompound;)V".
+//  BlockEntity.readNbt(NbtCompound) doesn't exist since 1.21.6 (replaced by the internal
+//  readData(ReadView) override point). This static helper is currently UNREACHABLE - the 5
+//  mixins that called it (BlockDataObjectMixin, BlockItemMixin, BlockStateArgumentMixin,
+//  CloneCommandMixin, FallingBlockEntityMixin) have been disabled in carpet-shadow.mixins.json
+//  because their @Redirect targets are equally stale and would crash game startup
+//  (defaultRequire = 1). Before re-enabling them: find the actual 1.21.11 public entry point
+//  those vanilla methods now use to load a BlockEntity from a raw NbtCompound (likely wraps the
+//  compound into a ReadView internally), and update both this helper and all 5 @At(target=...)
+//  descriptors to match.
 public interface InventoryItem {
 
     Collection<Inventory> carpet_shadow$getInventories();
@@ -31,7 +35,8 @@ public interface InventoryItem {
                 }
             }catch (Exception ignored){}
 
-            instance.readNbt(nbt);
+            // FIXME [PORT 1.21.11]: instance.readNbt(nbt) no longer exists - see class comment above.
+            // Left uncalled for now since this whole method is currently unreachable.
 
             try {
                 for (int index = 0; index < inv.size(); index++) {
@@ -41,8 +46,7 @@ public interface InventoryItem {
                     }
                 }
             }catch (Exception ignored){}
-        } else {
-            instance.readNbt(nbt);
         }
+        // FIXME [PORT 1.21.11]: else-branch instance.readNbt(nbt) also removed - see class comment above.
     }
 }
