@@ -27,7 +27,7 @@ public abstract class ItemStackMixin {
             if(CarpetShadowSettings.shadowItemMode.shouldResetCount()){
                 stack.setCount(0);
             }else if(CarpetShadowSettings.shadowItemMode.shouldLoadItem()) {
-                String shadow_id = nbt.getString("shadow");
+                String shadow_id = nbt.getString("shadow", "");
                 stack = Globals.getByIdOrAdd(shadow_id,stack);
                 CarpetShadow.LOGGER.debug("Shadowed item loaded from memory");
                 CarpetShadow.LOGGER.debug("id: " + shadow_id);
