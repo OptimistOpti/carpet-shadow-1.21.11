@@ -45,7 +45,7 @@ dependencies {
     modImplementation "maven.modrinth:carpet:${project.carpet_core_version}"
     implementation 'de.cronn:reflection-util:2.13.2'
     include(implementation( group: 'org.apache.commons', name: 'commons-collections4', version: 'latest.release'))
-    include(implementation(annotationProcessor("com.github.LlamaLad7.mixinextras:mixinextras-fabric:${project.mixin_extras_fabric_version}")))
+    include(implementation(annotationProcessor("io.github.llamalad7:mixinextras-fabric:${project.mixin_extras_fabric_version}")))
 
 }
 
