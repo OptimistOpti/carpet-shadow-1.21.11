@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "id": "carpet-shadow",
+  "version": "${version}",
+  "name": "Carpet Shadow",
+  "description": "carpet patches for shadow items",
+  "authors": [
+    {
+      "name": "mattymatty",
+      "contact": {
+        "discord": "mattymatty#9621"
+      }
+    }
+  ],
+  "contact": {
+    "homepage": "https://github.com/mattymatty97/carpet-shadow/releases",
+    "issues": "https://github.com/mattymatty97/carpet-shadow/issues"
+  },
+  "contributors": [
+    {
+      "name": "adammakesfilm",
+      "comment": "icon author",
+      "contact": {
+        "discord": "adammakesfilm#0001"
+      }
+    }
+  ],
+  "license": "MIT",
+  "icon": "assets/carpet-shadow/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.carpet_shadow.CarpetShadow"
+    ],
+    "preLaunch": [
+      "com.llamalad7.mixinextras.MixinExtrasBootstrap::init"
+    ]
+  },
+  "mixins": [
+    "carpet-shadow.mixins.json"
+  ],
+  "depends": {
+    "carpet": ">=1.4.194",
+    "minecraft": "1.21.11"
+  },
+  "custom": {
+    "modmenu": {
+      "parent": "carpet"
+    }
+  }
+}

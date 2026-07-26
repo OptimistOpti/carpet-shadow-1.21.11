@@ -1,0 +1,44 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.carpet_shadow.mixins",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "crafting.RecipeManagerMixin",
+    "fragility.DropperBlockMixin",
+    "fragility.HopperBlockEntityMixin",
+    "fragility.ItemEntityMixin",
+    "fragility.ItemScattererMixin",
+    "fragility.ItemStackMixin",
+    "fragility.PlayerInventoryMixin",
+    "fragility.ScreenHandlerMixin",
+    "fragility.SlotMixin",
+    "general.ItemStackMixin",
+    "general.LootTableMixin",
+    "general.ScreenHandlerMixin",
+    "hand_update_fix.ServerPlayerInteractionManagerMixin",
+    "inv_updates.ItemStackMixin",
+    "inv_updates.MinecraftServerMixin",
+    "inv_updates.SimpleInventoryMixin",
+    "inv_updates.SlotMixin",
+    "inv_updates.loaders.BlockDataObjectMixin",
+    "inv_updates.loaders.BlockEntityMixin",
+    "inv_updates.loaders.BlockItemMixin",
+    "inv_updates.loaders.BlockStateArgumentMixin",
+    "inv_updates.loaders.CloneCommandMixin",
+    "inv_updates.loaders.FallingBlockEntityMixin",
+    "persistence.ItemStackMixin",
+    "tooltip.InventoryS2CPacketMixin",
+    "tooltip.ItemStackMixin",
+    "tooltip.PacketByteBufMixin",
+    "tooltip.ScreenHandlerMixin",
+    "tooltip.ScreenHandlerSlotUpdateS2CPacketMixin"
+  ],
+  "client": [
+  ],
+  "server": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
