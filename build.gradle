@@ -77,17 +77,21 @@ java {
     if (JavaVersion.current() < javaVersion) {
         toolchain.languageVersion = JavaLanguageVersion.of(targetJavaVersion)
     }
-    archivesBaseName = project.archives_base_name
     // Loom will automatically attach sourcesJar to a RemapSourcesJar task and to the "build" task
     // if it is present.
     // If you remove this line, sources will not be generated.
     withSourcesJar()
 }
 
+// archivesBaseName on the java{} extension was removed in Gradle 9; this is the replacement.
+base {
+    archivesName = project.archives_base_name
+}
+
 jar {
     duplicatesStrategy(DuplicatesStrategy.EXCLUDE)
     from("LICENSE") {
-        rename { "${it}_${project.archivesBaseName}" }
+        rename { "${it}_${project.archives_base_name}" }
     }
 }
 
