@@ -28,7 +28,7 @@ public abstract class ServerPlayerInteractionManagerMixin {
             ActionResult result = cir.getReturnValue();
             if (result==ActionResult.SUCCESS || result == ActionResult.CONSUME) {
                 int index = (hand == Hand.OFF_HAND) ? PlayerInventory.OFF_HAND_SLOT : player.getInventory().getSelectedSlot();
-                player.currentScreenHandler.getSlotIndex(player.getInventory(), index).ifPresent(i -> player.currentScreenHandler.setPreviousTrackedSlot(i, new ItemStack(Blocks.AIR)));
+                player.currentScreenHandler.getSlotIndex(player.getInventory(), index).ifPresent(i -> player.currentScreenHandler.updateTrackedSlot(i, new ItemStack(Blocks.AIR), () -> new ItemStack(Blocks.AIR)));
             }
         }
     }
