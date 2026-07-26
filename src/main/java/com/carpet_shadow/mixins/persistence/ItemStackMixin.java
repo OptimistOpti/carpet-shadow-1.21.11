@@ -52,4 +52,4 @@ public abstract class ItemStackMixin {
         return ret;
     }
 }
-}
+
