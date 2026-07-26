@@ -16,6 +16,13 @@ sourceSets {
 }
 
 repositories {
+    // Add repositories to retrieve artifacts from in here.
+    // You should only use this when depending on other mods because
+    // Loom adds the essential maven repositories to download Minecraft and libraries from automatically.
+    // See https://docs.gradle.org/current/userguide/declaring_repositories.html
+    // for more information about repositories.
+    // masa.dy.fi/maven is no longer updated for recent carpet builds - Modrinth's own maven is now
+    // the up to date source for carpet releases (including 1.21.11).
     exclusiveContent {
         forRepository {
             maven {
@@ -28,12 +35,6 @@ repositories {
         }
     }
     mavenCentral()
-}
-        filter {
-            includeGroup "maven.modrinth"
-        }
-    }
-    maven { url 'https://jitpack.io' }
 }
 
 dependencies {
